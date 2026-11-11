@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculadoraDePropinas.Views.MainPage"
+             Title="Calculadora de Propinas">
+
+    <ScrollView>
+        <VerticalStackLayout 
+      Padding="24" 
+      Spacing="16">
+            <Border 
+       Stroke="LightGray" 
+       StrokeThickness="2"
+       Padding="15">
+                <Grid
+        RowSpacing="12"
+        RowDefinitions="*,*,*,*"
+        ColumnDefinitions="auto,*,auto">
+                    <Label 
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="Importe:"
+        VerticalOptions="Center"
+        HorizontalOptions="End"/>
+                    <Entry 
+         Grid.Row="0"
+         Grid.Column="1"
+         Grid.ColumnSpan="2"
+         VerticalOptions="Center"
+            Text="{Binding Path=ImporteDelConsumo}"/>
+                    <Label 
+         Grid.Row="1" 
+         Grid.Column="0"
+         Text="# de personas:"
+         VerticalOptions="Center"
+         HorizontalOptions="End"/>
+                    <Entry 
+         Grid.Row="1" 
+         Grid.Column="1"
+            Text="{Binding Path=NumeroDePersonas}"/>
+                    <Stepper 
+         Grid.Row="1" 
+         Grid.Column="2"
+         
+                        Minimum="1"
+                        Maximum="10"
+                        Increment="1"
+                        Value="{Binding Path=NumeroDePersonas}"/>
+                    <HorizontalStackLayout 
+         Grid.Row="2"
+         Grid.Column="0"
+         Grid.ColumnSpan="3"
+         Spacing="20"
+         Margin="0,8,0,4"
+         HorizontalOptions="Center">
+                        <Button 
+          Text="8%"
+          MinimumWidthRequest="75"
+                            Command="{Binding Path=CambiarPorcentajeDePropinaCommand}"
+                            CommandParameter="8"/>
+                        <Button 
+          Text="10%"
+          MinimumWidthRequest="75"
+                            
+                            Command="{Binding Path=CambiarPorcentajeDePropinaCommand}"
+                            CommandParameter="10"/>
+                        <Button 
+          Text="12.5%"
+          MinimumWidthRequest="75"
+                            
+                            Command="{Binding Path=CambiarPorcentajeDePropinaCommand}"
+                            CommandParameter="12.5"/>
+                        <Button 
+          Text="15%"
+          MinimumWidthRequest="75"
+                            
+                            Command="{Binding Path=CambiarPorcentajeDePropinaCommand}"
+                            CommandParameter="15"/>
+                    </HorizontalStackLayout>
+                    <Label
+         Grid.Row="3" 
+         Grid.Column="0"
+         Text="% de propina:"
+         HorizontalOptions="End"
+         VerticalOptions="Center"/>
+                    <Entry 
+         Grid.Row="3" 
+         Grid.Column="1"
+            Text="{Binding Path=PorcentajeDePropina}"/>
+                    <Stepper 
+         Grid.Row="3" 
+         Grid.Column="2"
+         VerticalOptions="Center"
+         Minimum="0"
+            Maximum="20"
+             Increment="0.5"           
+                        Value="{Binding Path=PorcentajeDePropina}"/>
+                </Grid>
+            </Border>
+
+            <HorizontalStackLayout 
+       Spacing="15"
+       HorizontalOptions="Center">
+                <Button 
+        Text="Calcular"
+        MinimumWidthRequest="100"
+           BackgroundColor="Green"
+           Command="{Binding Path=CalcularCommand}"/>
+                <Button 
+        Text="Limpiar"
+        MinimumWidthRequest="100"
+           BackgroundColor="DarkBlue"
+                    Command="{Binding Path=LimpiarCommand}"/>
+            </HorizontalStackLayout>
+
+            <Border 
+       Stroke="LightGray" 
+       StrokeThickness="2"
+       Padding="15">
+                <Grid 
+        RowSpacing="12"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+        ColumnDefinitions="*, Auto">
+                    <Label 
+         Grid.Row="0" 
+         Grid.Column="0" 
+         Text="Importe sin propina por persona:" 
+         VerticalOptions="Center"/>
+                    <Label Grid.Row="0" 
+         Grid.Column="1" 
+         Text="{Binding Path=ImporteDelConsumoPorPersona}" 
+         FontAttributes="Bold"
+         HorizontalOptions="End"/>
+                    <Label
+         Grid.Row="1" 
+         Grid.Column="0" 
+         Text="Importe de la propina:" 
+         VerticalOptions="Center"/>
+                    <Label
+         Grid.Row="1" 
+         Grid.Column="1" 
+         Text="{Binding Path=ImporteDeLaPropina}" 
+         FontAttributes="Bold" 
+         HorizontalOptions="End"/>
+                    <Label
+         Grid.Row="2" 
+         Grid.Column="0" 
+         Text="Propina por persona:" 
+         VerticalOptions="Center"/>
+                    <Label
+         Grid.Row="2" 
+         Grid.Column="1" 
+         Text="{Binding Path=ImporteDeLaPropinaPorPersona}"
+         FontAttributes="Bold" 
+         HorizontalOptions="End"/>
+                    <Label 
+         Grid.Row="3" 
+         Grid.Column="0" 
+         Text="Importe total con propina:" 
+         VerticalOptions="Center"/>
+                    <Label
+         Grid.Row="3" 
+         Grid.Column="1" 
+         Text="{Binding Path=ImporteDelConsumoConPropina}" 
+         FontAttributes="Bold" 
+         HorizontalOptions="End"/>
+                    <Label
+         Grid.Row="4" 
+         Grid.Column="0" 
+         Text="Importe con propina por persona:" 
+         VerticalOptions="Center"/>
+                    <Label
+         Grid.Row="4" 
+         Grid.Column="1" 
+         Text="{Binding Path=ImporteDelConsumoConPropinaPorPersona}" 
+         FontAttributes="Bold" 
+         HorizontalOptions="End"/>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
